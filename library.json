@@ -1,0 +1,19 @@
+{
+"name": "MutilaNeoPixel",
+"frameworks": "Arduino",
+"keywords": "NeoPixel, WS2811, WS2812, RGB, LED",
+"description": "MutilaNeoPixel wrapper around Adafruit_NeoPixel with millis correction",
+"url": "https://github.com/matthewg42/MutilaNeoPixel",
+"authors":
+[
+{
+        "name": "Matthew Gates (Mouse)"
+}
+],
+"repository":
+{
+    "type": "git",
+    "url": "https://github.com/matthewg42/MutilaNeoPixel"
+}
+}
+
