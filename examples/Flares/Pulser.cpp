@@ -13,28 +13,39 @@ PulserBlob::PulserBlob() :
 
 void PulserBlob::startSequence()
 {
-    _r = random(255);
-    _g = random(64);
-    _b = random(255);
+    _r = random(200) + 55;
+    _g = random(128);
+    _b = random(100) + 155;
     _blobStart = Millis();
-    _lifeMs = random(1000,3000);
+    _lifeMs = random(1000, 10000);
     _pos = random(LED_COUNT-1);
+    _width = random(1, 8);
     DB(F("PulserBlob::startSequence pos="));
     DB(_pos);
-}
-
-void PulserBlob::draw() 
-{
-    DB(F("PulserBlob::draw pos="));
-    DB(_pos);
+    DB(F("width="));
+    DB(_width);
     DB(F(" RGB="));
     DB(_r, HEX);
     DB(' ');
     DB(_g, HEX);
     DB(' ');
-    DB(_b, HEX);
+    DBLN(_b, HEX);
+}
+
+void PulserBlob::draw() 
+{
+    //DB(F("PulserBlob::draw pos="));
+    //DB(_pos);
+    //DB(F(" width="));
+    //DB(_width);
+    //DB(F(" RGB="));
+    //DB(_r, HEX);
+    //DB(' ');
+    //DB(_g, HEX);
+    //DB(' ');
+    //DB(_b, HEX);
     if (!active()) {
-        DBLN(F(" inactive"));
+        //DBLN(F(" inactive"));
         return;
     }
 
@@ -42,13 +53,22 @@ void PulserBlob::draw()
     if (percent < 0.5) {
         // waxing
         percent *= 2;
-        DB(F(" waxing "));
-        DBLN(percent, 2);
+        //DB(F(" waxing "));
+        //DBLN(percent, 2);
     } else {
         // waning
         percent = 1.0-((percent-0.5)*2);
-        DB(F(" waning "));
-        DBLN(percent, 2);
+        //DB(F(" waning "));
+        //DBLN(percent, 2);
+    }
+    // draw central pixel
+    LEDs.setPixelColor(_pos, _r*percent, _g*percent, _b*percent);
+
+    // draw pixels either size of the central one
+    float sideBright = 0.90;
+    for (uint8_t i=1; i<=_width; i++) {
+        LEDs.setPixelColor((_pos + LED_COUNT - i) % LED_COUNT, _r*percent*sideBright, _g*percent*sideBright, _b*percent*sideBright);
+        sideBright = sideBright * sideBright * sideBright;
     }
 }   
 

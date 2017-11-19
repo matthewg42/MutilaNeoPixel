@@ -18,13 +18,13 @@ private:
     uint16_t _pos;          //!< position of center of blob (will wrap)
     uint16_t _lifeMs;       //!< how long we expect this blob to exist for
     uint32_t _blobStart;    //!< millis when we started
+    uint8_t _width;         //!< how wide is a blob? 
 
 };
     
 class Pulser : public Flare {
 public:
-    //const uint8_t NumberOfPulses = (LED_COUNT/10)+1;
-    const static uint8_t NumberOfPulses = 1;
+    const static uint8_t NumberOfPulses = (LED_COUNT/10)+1;
 
     Pulser();
     virtual ~Pulser();
