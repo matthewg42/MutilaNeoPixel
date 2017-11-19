@@ -11,6 +11,7 @@
 #include "Spurt.h"
 #include "Sparkle.h"
 #include "Rainbow.h"
+#include "Pulser.h"
 
 Heartbeat heartbeat(13);
 Flare* flare = NULL;
@@ -21,7 +22,7 @@ void nextFlare()
     if (flare) {
         delete flare;
     }
-    flareID = (flareID+1) % 4;
+    flareID = (flareID+1) % 5;
     switch (flareID) {
     case 0:
         DBLN(F("Chase"));
@@ -38,6 +39,10 @@ void nextFlare()
     case 3:
         DBLN(F("Sparkle"));
         flare = new Sparkle();
+        break;
+    case 4:
+        DBLN(F("Pulser"));
+        flare = new Pulser();
         break;
     default:
         DBLN("unknown flareID");
