@@ -1,5 +1,7 @@
 #pragma once
 
+#include <MutilaDebug.h>
+
 class Flare {
 public:
     // called periodically from loop()

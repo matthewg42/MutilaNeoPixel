@@ -24,15 +24,19 @@ void nextFlare()
     flareID = (flareID+1) % 4;
     switch (flareID) {
     case 0:
+        DBLN(F("Chase"));
         flare = new Chase(LED_COUNT/8, 30);
         break;
     case 1:
+        DBLN(F("Rainbow"));
         flare = new Rainbow();
         break;
     case 2:
+        DBLN(F("Spurt"));
         flare = new Spurt();
         break;
     case 3:
+        DBLN(F("Sparkle"));
         flare = new Sparkle();
         break;
     default:
@@ -51,7 +55,7 @@ void setup()
     LEDs.clear();
     LEDs.show();
     nextFlare();
-    Serial.println(F("setup:E"));
+    DBLN(F("setup:E"));
 }
 
 void loop()
@@ -61,7 +65,7 @@ void loop()
     flare->update();
 
     if (Button.tapped()) {
-        DBLN("tap");
+        DBLN(F("Button pressed"));
         nextFlare();
     }
 }

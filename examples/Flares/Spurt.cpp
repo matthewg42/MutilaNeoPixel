@@ -1,7 +1,8 @@
+#include <MutilaDebug.h>
+#include <Arduino.h>
 #include "Spurt.h"
 #include "Config.h"
 #include "LEDs.h"
-#include <Arduino.h>
 
 SpurtBlob::SpurtBlob() : 
     _location(LED_COUNT)
@@ -39,6 +40,7 @@ void SpurtBlob::draw()
 
 Spurt::Spurt()
 {
+    DBLN(F("SpurtBlob::SpurtBlob()"));   
     fire(0);
 }
 
@@ -100,12 +102,10 @@ void Spurt::fire(uint8_t slot)
     uint32_t b = random(256);
     uint32_t col = (r<<16) + (g<<8) + b; 
     float vel = random(FLARE_SPURT_VEL_MIN, FLARE_SPURT_VEL_MAX)/200.;
-#ifdef DEBUGFLARE
-    Serial.print(F("FIRE col=0x"));
-    Serial.print(col, HEX);
-    Serial.print(F(" vel="));
-    Serial.println(vel, 5);
-#endif
+    DB(F("FIRE col=0x"));
+    DB(col, HEX);
+    DB(F(" vel="));
+    DBLN(vel, 5);
     _spurts[slot].fire(col, vel);
 
 }

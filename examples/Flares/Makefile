@@ -19,8 +19,8 @@ ARDUINO_LIBS = Mutila MutilaNeoPixel Adafruit_NeoPixel
 # Other boards have variants, e.g. the nano has two versions - the older
 # one with the 168 or the more modern one with the 328 CPU.  The 168 is
 # the default, so we select the alternative CPU like this:
-#BOARD_TAG = nano
-#BOARD_SUB = atmega328
+BOARD_TAG = nano
+BOARD_SUB = atmega328
 #
 # Pro Mini 5V
 #BOARD_TAG = pro

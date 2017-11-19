@@ -10,6 +10,7 @@ Chase::Chase(uint16_t chunkSize, unsigned long delay) :
     _delay(delay),
     _divider(false)
 {
+    DBLN(F("Chase::Chase()"));   
     newColor();
     _lastUpdate = Millis();
 }

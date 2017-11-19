@@ -1,11 +1,13 @@
+#include <Arduino.h>
+#include <MutilaDebug.h>
 #include "Sparkle.h"
 #include "Config.h"
 #include "LEDs.h"
-#include <Arduino.h>
 
 Sparkle::Sparkle() :
     _lastUpdate(0)
 {
+    DBLN(F("Sparkle::Sparkle()"));   
 }
 
 Sparkle::~Sparkle()

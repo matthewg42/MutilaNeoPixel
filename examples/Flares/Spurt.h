@@ -4,7 +4,7 @@
 #include "Flare.h"
 #include "Config.h"
 
-#define FLARE_SPURT_COUNT           (LED_COUNT/20)
+#define FLARE_SPURT_COUNT           3
 #define FLARE_SPURT_DELAY           200
 #define FLARE_SPURT_VEL_MIN         (LED_COUNT/30)
 #define FLARE_SPURT_VEL_MAX         LED_COUNT

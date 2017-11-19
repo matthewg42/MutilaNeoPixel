@@ -1,3 +1,4 @@
+#include <MutilaDebug.h>
 #include "Rainbow.h"
 #include "Config.h"
 #include "LEDs.h"
@@ -6,6 +7,7 @@ Rainbow::Rainbow() :
     _lastUpdate(0),
     _pos(0)
 {
+    DBLN(F("Rainbow::Rainbow()"));   
 }
 
 Rainbow::~Rainbow()
@@ -24,10 +26,6 @@ void Rainbow::update()
 
 // Slightly different, this makes the rainbow equally distributed throughout
 void Rainbow::display() {
-#ifdef DEBUG
-    Serial.print(F("Raindow::display, _pos="));
-    Serial.println(_pos);
-#endif
     for(uint16_t i=0; i<LED_COUNT; i++) {
         //LEDs.setPixelColor(i, Wheel((i+LED_COUNT) & 255));
         LEDs.setPixelColor(i, Wheel(((i * 256 / LED_COUNT) + _pos) & 255));
