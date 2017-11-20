@@ -19,7 +19,14 @@
  */
 class MutilaNeoPixel : public Adafruit_NeoPixel {
 public:
-    //! Construct a MutilaNeoPixel object
+    /*! Construct a MutilaNeoPixel object
+     * Construct a new MutilaNeoPixel object
+     * \param n is the number of LEDs in the strip
+     * \param p is the pin for the data line
+     * \param neoPixelType is the type of the pixel (RGB format, frequency etc)
+     *
+     * See the Adafruit_NeoPixel documentation for more details on possible type values.
+     */
     MutilaNeoPixel(uint16_t n, uint8_t p=6, neoPixelType t=NEO_GRB + NEO_KHZ800);
 
     //! Send updated pixel state to LEDs, and update Millis() offset
