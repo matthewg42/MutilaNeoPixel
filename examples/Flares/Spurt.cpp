@@ -22,10 +22,10 @@ void SpurtBlob::draw()
         // get the current RGB values for existing pixel and this SpurtBlob
         uint32_t color = LEDs.getPixelColor((uint16_t)_location);
         uint8_t cr = color >> 16;
-        uint8_t cg = (color - cr) >> 8;
+        uint8_t cg = (color >> 8) % 256;
         uint8_t cb = color % 256;
         uint8_t br = _color >> 16;
-        uint8_t bg = (_color - br) >> 8;
+        uint8_t bg = (_color >> 8) % 256;
         uint8_t bb = _color % 256;
 
         // Set the new pixel RGB as the max of the existing and SpurtBlob colors
@@ -59,7 +59,7 @@ void Spurt::update()
     for(uint16_t i=0; i<LED_COUNT; i++) {
         const uint32_t color = LEDs.getPixelColor(i);
         r = color >> 16;
-        g = (color - r) >> 8;
+        g = (color >> 8) % 256;
         b = color % 256;
         if (r > 0) r--;
         if (g > 0) g--;

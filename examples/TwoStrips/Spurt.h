@@ -6,7 +6,7 @@
 #include "LEDStrip.h"
 
 #define FLARE_SPURT_COUNT           3
-#define FLARE_SPURT_DELAY           200
+#define FLARE_SPURT_DELAY           1000
 
 class SpurtBlob {
 public:
